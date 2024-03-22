@@ -9,9 +9,7 @@ import Col from "react-bootstrap/Col";
 function App() {
   return (
     <div className='container'>
-      <h1>Hello World.</h1>
-      <h1>Hello World2.</h1>
-      <h1>Hello World3.</h1>
+      <h1>Build and delpoy is working</h1>
       {/*
         <Container className='mb-3' fluid>
           <Row>
