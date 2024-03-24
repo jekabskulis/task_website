@@ -1,31 +1,20 @@
 
 import './App.css';
-/*
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-*/
+
+import Home from './Home';
+import ProductAdd from './ProductAdd';
+
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+
 function App() {
   return (
-    <div className='container'>
-      <h1>Build and delpoy is working</h1>
-      {/*
-        <Container className='mb-3' fluid>
-          <Row>
-            {Array.from(cards).map((card, index) =>
-            {
-              return(
-                <Col key={Math.random()} className='m-3 item-list'>
-                  <Form className='checkbox-form'>
-                    <Form.Check type='checkbox' id={`delete-item-${index}`} label="" className='delete-checkbox'></Form.Check>
-                  </Form>
-                </Col>
-              )
-            })}
-          </Row>
-        </Container>
-          */}
+    <div className='container mt-3'>  
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product-add" element={<ProductAdd />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
