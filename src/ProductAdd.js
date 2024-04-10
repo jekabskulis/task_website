@@ -26,10 +26,11 @@ const newProductDefaultValue =
     attributes: ""
 }
 
-const Product_add = () =>
+const ProductAdd = () =>
 {
     const[newProductValue, setNewProductValue] = useState(newProductDefaultValue);
     const[product, setProduct] = useState([]);
+    // eslint-disable-next-line
     const[formType, setFormType] = useState("");
 
     const handleFormTypeChange = (event) => 
@@ -41,12 +42,13 @@ const Product_add = () =>
         let key = event.target.value;
         setFormType(classObj[key].getHTML);
         
+        
         const updatedNewProductValue =
-                                        {
-                                            ...newProductValue,
-                                            attributes: ""
-                                        }
-                                        setNewProductValue(updatedNewProductValue)
+        {
+            ...newProductValue,
+            attributes: ""
+        }
+        setNewProductValue(updatedNewProductValue)
     }
 
     return(
@@ -321,4 +323,4 @@ const Product_add = () =>
     );  
 }
 
-export default Product_add;
+export default ProductAdd;
