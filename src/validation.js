@@ -1,6 +1,7 @@
 
 const validateInput = () =>
 {
+    console.log("input validated");
     document.addEventListener("DOMContentLoaded", () => 
     {
         let elem = document.getElementsByTagName("input");

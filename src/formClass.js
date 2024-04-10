@@ -26,6 +26,7 @@ class DVD extends FormClass
         document.getElementById("length").required = false;
         document.getElementById("height").required = false;
         document.getElementById("width").required = false;
+        console.log("formClas");
         return null;
     }
 }
