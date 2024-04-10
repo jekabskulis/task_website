@@ -1,4 +1,5 @@
 
+
 .products__heading, .add-products__heading
 {
   font-weight: bold;
@@ -8,4 +9,13 @@
 .products__product-change__delete
 {
   width: 120px;
+}
+.form-label
+{
+  width: 1000px;
+}
+
+.add-products__form > .add-products__form__dvd, .add-products__form > .add-products__form__book, .add-products__form > #furnitureForm
+{
+  display: none;
 }
