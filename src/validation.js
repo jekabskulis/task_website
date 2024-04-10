@@ -1,7 +1,6 @@
 
 const validateInput = () =>
 {
-    console.log("input validated");
     document.addEventListener("DOMContentLoaded", () => 
     {
         let elem = document.getElementsByTagName("input");
@@ -13,11 +12,13 @@ const validateInput = () =>
                 if(event.target.validity.valueMissing)
                 {
                     event.target.setCustomValidity("Please, submit required data");
+                    console.log("input validated");
                 }
                 //Validity message for numbers, overwrites default message.
                 if(event.target.validity.patternMismatch)
                 {
-                    event.target.setCustomValidity("Please, provide the data of indicated type")
+                    event.target.setCustomValidity("Please, provide the data of indicated type");
+                    console.log("input validated");
                 }
             };
             elem[i].oninput = (event) => 
