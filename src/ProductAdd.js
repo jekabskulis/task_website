@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { useState } from "react";
 
 import { DVD, Book, Furniture } from "./formClass.js";
-import { validateInput} from "./validation.js";
+//import { validateInput} from "./validation.js";
 
 
 const newProductDefaultValue =
@@ -24,6 +24,34 @@ const newProductDefaultValue =
     size: "",
     weight: "",
     attributes: ""
+}
+//Supposed to be in a separate file, but validation didn't properly work unless validation function is in the same file as input fields.
+const validateInput = () =>
+{
+    document.addEventListener("DOMContentLoaded", () => 
+    {
+        let elem = document.getElementsByTagName("input");
+        for (let i = 0; i < elem.length; i++) {
+            elem[i].oninvalid = (event) => 
+            {
+                event.target.setCustomValidity("");
+                //Default validity message
+                if(event.target.validity.valueMissing)
+                {
+                    event.target.setCustomValidity("Please, submit required data");
+                }
+                //Validity message for numbers, overwrites default message.
+                if(event.target.validity.patternMismatch)
+                {
+                    event.target.setCustomValidity("Please, provide the data of indicated type");
+                }
+            };
+            elem[i].oninput = (event) => 
+            {
+                event.target.setCustomValidity("");
+            };
+        }
+    })
 }
 
 const ProductAdd = () =>
