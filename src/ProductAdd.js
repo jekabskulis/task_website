@@ -98,14 +98,14 @@ const ProductAdd = () =>
                         {
                         
                         event.preventDefault();
-                        fetch("https://jekabskulis.000webhostapp.com/upload.php",
+                        fetch("https://antidepressant-resc.000webhostapp.com/index.php",
                         {
                             method: "POST",
                             headers:
                             [
                                 ["Content-Type", "application/json"],
                                 ["Accept", "application/json"],
-                                ["Access-Control-Allow-Origin", "*"]
+                                ["Access-Control-Allow-Origin", "https://antidepressant-resc.000webhostapp.com/index.php"]
                             ],
                             body: JSON.stringify(newProductValue)
                         })
