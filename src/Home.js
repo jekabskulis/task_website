@@ -23,7 +23,7 @@ const Home = () =>
     //Returns info from the database
     const getValueList = () =>
     {
-        fetch("http://jekabs-kulis.wuaze.com/getInfo.php", {
+        fetch("https://jekabs-kulis.wuaze.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -65,7 +65,7 @@ const Home = () =>
                             onSubmit={(event) =>
                                 {
                                 event.preventDefault();
-                                fetch("http://jekabs-kulis.wuaze.com/delete.php",
+                                fetch("https://jekabs-kulis.wuaze.com/delete.php",
                                 {
                                     method: "POST",
                                     headers:

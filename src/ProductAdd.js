@@ -63,7 +63,7 @@ const ProductAdd = () =>
 
     const getSkuList = () =>
     {
-        fetch("http://jekabs-kulis.wuaze.com/getInfo.php", {
+        fetch("https://jekabs-kulis.wuaze.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -120,7 +120,7 @@ const ProductAdd = () =>
                     onSubmit={(event) =>
                         {
                         event.preventDefault();
-                        fetch("http://jekabs-kulis.wuaze.com/upload.php",
+                        fetch("https://jekabs-kulis.wuaze.com/upload.php",
                         {
                             method: "POST",
                             headers:
