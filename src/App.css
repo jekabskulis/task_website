@@ -19,3 +19,15 @@
 {
   display: none;
 }
+
+.delete-checkbox > input
+{
+  border: 2px solid black;
+}
+#sku-uniqueness-label
+{
+  display: none;
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
+}

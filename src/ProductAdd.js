@@ -1,4 +1,3 @@
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
+import {useState, useEffect} from "react";
 
 import { DVD, Book, Furniture } from "./formClass.js";
 //import { validateInput} from "./validation.js";
@@ -56,10 +55,33 @@ const validateInput = () =>
 
 const ProductAdd = () =>
 {
+    const[skus, setSkus] = useState([]);
     const[newProductValue, setNewProductValue] = useState(newProductDefaultValue);
     const[product, setProduct] = useState([]);
     // eslint-disable-next-line
     const[formType, setFormType] = useState("");
+
+    const getSkuList = () =>
+    {
+        fetch("https://127.0.0.1/task/getInfro.php", {
+            method: "GET",
+            headers:
+            [
+                ["Content-Type", "application/json"],
+                ["Accept", "application/json"],
+                ["Access-Control-Allow-Origin", "*"]
+            ]
+        })
+        .then((rep) => rep.json())
+        .then((allSkus) =>
+        {
+            setSkus(allSkus)
+        })
+    }
+    useEffect(() =>
+    {
+        getSkuList();
+    }, [])
 
     const handleFormTypeChange = (event) => 
     {
@@ -74,6 +96,7 @@ const ProductAdd = () =>
         const updatedNewProductValue =
         {
             ...newProductValue,
+            type: event.target.value,
             attributes: ""
         }
         setNewProductValue(updatedNewProductValue)
@@ -96,16 +119,15 @@ const ProductAdd = () =>
                     id="product_form"
                     onSubmit={(event) =>
                         {
-                        
                         event.preventDefault();
-                        fetch("https://antidepressant-resc.000webhostapp.com/index.php",
+                        fetch("https://127.0.0.1/task/upload.php",
                         {
                             method: "POST",
                             headers:
                             [
                                 ["Content-Type", "application/json"],
                                 ["Accept", "application/json"],
-                                ["Access-Control-Allow-Origin", "https://antidepressant-resc.000webhostapp.com/index.php"]
+                                ["Access-Control-Allow-Origin", "*"]
                             ],
                             body: JSON.stringify(newProductValue)
                         })
@@ -136,12 +158,37 @@ const ProductAdd = () =>
                                             ...newProductValue,
                                             sku: event.target.value
                                         }
+                                        for(const item of Array.from(skus))
+                                        {
+                                            console.log(item, "; ", event.target.value)
+                                            if(item.sku === event.target.value) 
+                                            {
+                                                document.getElementById("sku-uniqueness").required = true;
+                                                document.getElementById("sku-uniqueness-label").style.display = "flex";
+                                                break;
+                                            }
+                                            else
+                                            {
+                                                document.getElementById("sku-uniqueness").required = false;
+                                                document.getElementById("sku-uniqueness-label").style.display = "none";
+                                            }
+                                        }
                                         setNewProductValue(updatedNewProductValue)
                                     }
                                 }
                                 required="required">
                                 </Form.Control>
                             </Col>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label
+                            id="sku-uniqueness-label">
+                                SKU is not unique!
+                            </Form.Label>
+                            <Form.Control
+                            type="hidden"
+                            id="sku-uniqueness">
+                            </Form.Control>
                         </Form.Group>
                         <Form.Group as={Row} className="add-products__form__name  mb-3">
                             <Form.Label column sm={2}>Name</Form.Label>
@@ -207,6 +254,7 @@ const ProductAdd = () =>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="add-products__form__dvd  mb-3" id="dvdForm">
+                            <h3>Please, provide size.</h3>
                             <Form.Label column sm={2}>Size (MB)</Form.Label>
                             <Col sm={8}>
                                 <Form.Control
@@ -223,7 +271,7 @@ const ProductAdd = () =>
                                         {
                                             ...newProductValue,
                                             size: event.target.value,
-                                            attributes: event.target.value + " MB"
+                                            attributes: "Size: " + event.target.value + " MB"
                                         }
                                         setNewProductValue(updatedNewProductValue)
                                     }
@@ -234,6 +282,7 @@ const ProductAdd = () =>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="add-products__form__book mb-3" id="bookForm">
+                            <h3>Please, provide weight.</h3>
                             <Form.Label column sm={2}>Weight (KG)</Form.Label>
                             <Col sm={8}>
                                 <Form.Control
@@ -250,7 +299,7 @@ const ProductAdd = () =>
                                         {
                                             ...newProductValue,
                                             weight: event.target.value,
-                                            attributes: event.target.value + " KG"
+                                            attributes: "Weight: " + event.target.value + " KG"
                                         }
                                         setNewProductValue(updatedNewProductValue)
                                     }
@@ -261,6 +310,7 @@ const ProductAdd = () =>
                             </Col>
                         </Form.Group>
                         <div id="furnitureForm">
+                            <h3>Please, provide dimensions.</h3>
                             <Form.Group as={Row} className="add-products__form__furniture mb-3">
                                 <Form.Label column sm={2}>Height (CM)</Form.Label>
                                 <Col sm={8}>
@@ -330,7 +380,7 @@ const ProductAdd = () =>
                                             {
                                                 ...newProductValue,
                                                 length: event.target.value,
-                                                attributes: newProductValue.height + "x" + newProductValue.width + "x" + event.target.value
+                                                attributes: "Dimensions: " + newProductValue.height + "x" + newProductValue.width + "x" + event.target.value
                                             }
                                             setNewProductValue(updatedNewProductValue)
                                         }
