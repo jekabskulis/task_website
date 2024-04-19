@@ -23,7 +23,7 @@ const Home = () =>
     //Returns info from the database
     const getValueList = () =>
     {
-        fetch("https://jekabskulis.000webhostapp.com/getInfo.php", {
+        fetch("http://jekabs-kulis.wuaze.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -49,8 +49,8 @@ const Home = () =>
             <Navbar className='justify-content-between pb-0'>
                 <div className='products__heading'>Product List</div>
                 <Row className='products__product-change'>
-                    <Col><Link to='/product-add'><Button className='products__product-chgage__add'>Add</Button></Link></Col>
-                    <Col><Button className='products__product-change__delete btn-danger' id='delete-product-btn' form="delete-form" type="submit">Mass delete</Button></Col>
+                    <Col><Link to='/product-add'><Button className='products__product-chgage__add'>ADD</Button></Link></Col>
+                    <Col><Button className='products__product-change__delete btn-danger' id='delete-product-btn' form="delete-form" type="submit">MASS DELETE</Button></Col>
                 </Row>
             </Navbar>
             <hr/>
@@ -65,7 +65,7 @@ const Home = () =>
                             onSubmit={(event) =>
                                 {
                                 event.preventDefault();
-                                fetch("https://jekabskulis.000webhostapp.com/delete.php",
+                                fetch("http://jekabs-kulis.wuaze.com/delete.php",
                                 {
                                     method: "POST",
                                     headers:

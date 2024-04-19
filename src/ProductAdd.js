@@ -63,7 +63,7 @@ const ProductAdd = () =>
 
     const getSkuList = () =>
     {
-        fetch("https://jekabskulis.000webhostapp.com/getInfo.php", {
+        fetch("http://jekabs-kulis.wuaze.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -107,8 +107,8 @@ const ProductAdd = () =>
              <Navbar className='justify-content-between pb-0'>
                 <div className='add-products__heading'>Product List</div>
                 <Row className='add-products__product-change'>
-                    <Col><Button className='add-products__product-change__Save' form="product_form" type="submit">Save</Button></Col>
-                    <Col><Link to='/'><Button className='add-products__product-chgage__cancel btn-danger'>Cancel</Button></Link></Col>
+                    <Col><Button className='add-products__product-change__Save' form="product_form" type="submit">SAVE</Button></Col>
+                    <Col><Link to='/'><Button className='add-products__product-chgage__cancel btn-danger'>CANCEL</Button></Link></Col>
                 </Row>
             </Navbar>
             <hr/>
@@ -120,7 +120,7 @@ const ProductAdd = () =>
                     onSubmit={(event) =>
                         {
                         event.preventDefault();
-                        fetch("https://jekabskulis.000webhostapp.com/upload.php",
+                        fetch("http://jekabs-kulis.wuaze.com/upload.php",
                         {
                             method: "POST",
                             headers:
