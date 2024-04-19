@@ -23,7 +23,7 @@ const Home = () =>
     //Returns info from the database
     const getValueList = () =>
     {
-        fetch("https://127.0.0.1/task/getInfro.php", {
+        fetch("https://jekabskulis.000webhostapp.com/getInfo.php", {
             method: "GET",
             headers:
             [
