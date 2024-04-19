@@ -23,7 +23,7 @@ const Home = () =>
     //Returns info from the database
     const getValueList = () =>
     {
-        fetch("https://127.0.0.1/task/getInfro.php", {
+        fetch("https://jekabskulis.000webhostapp.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -65,7 +65,7 @@ const Home = () =>
                             onSubmit={(event) =>
                                 {
                                 event.preventDefault();
-                                fetch("https://127.0.0.1/task/delete.php",
+                                fetch("https://jekabskulis.000webhostapp.com/delete.php",
                                 {
                                     method: "POST",
                                     headers:

@@ -63,7 +63,7 @@ const ProductAdd = () =>
 
     const getSkuList = () =>
     {
-        fetch("https://127.0.0.1/task/getInfro.php", {
+        fetch("https://jekabskulis.000webhostapp.com/getInfo.php", {
             method: "GET",
             headers:
             [
@@ -120,7 +120,7 @@ const ProductAdd = () =>
                     onSubmit={(event) =>
                         {
                         event.preventDefault();
-                        fetch("https://127.0.0.1/task/upload.php",
+                        fetch("https://jekabskulis.000webhostapp.com/upload.php",
                         {
                             method: "POST",
                             headers:
