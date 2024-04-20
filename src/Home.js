@@ -5,8 +5,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import {Link} from 'react-router-dom';
 import {useState, useEffect} from "react";
+
+const getInfoLink = "https://127.0.0.1/task/getInfro.php";
+const deleteLink = "https://127.0.0.1/task/delete.php";
 
 const newDeleteProductDefaultValue = 
 {
@@ -23,7 +25,7 @@ const Home = () =>
     //Returns info from the database
     const getValueList = () =>
     {
-        fetch("https://jekabs-kulis.wuaze.com/getInfo.php", {
+        fetch(getInfoLink, {
             method: "GET",
             headers:
             [
@@ -44,12 +46,17 @@ const Home = () =>
         getValueList();
     }, [])
 
+    const loadProductAdd = () =>
+    {
+        window.location.href = "http://localhost:3000/product-add";
+    }
+
     return(
         <div className="products">
             <Navbar className='justify-content-between pb-0'>
                 <div className='products__heading'>Product List</div>
                 <Row className='products__product-change'>
-                    <Col><Link to='/product-add'><Button className='products__product-chgage__add'>ADD</Button></Link></Col>
+                    <Col><Button className='products__product-chgage__add' onClick={loadProductAdd}>ADD</Button></Col>
                     <Col><Button className='products__product-change__delete btn-danger' id='delete-product-btn' form="delete-form" type="submit">MASS DELETE</Button></Col>
                 </Row>
             </Navbar>
@@ -65,7 +72,7 @@ const Home = () =>
                             onSubmit={(event) =>
                                 {
                                 event.preventDefault();
-                                fetch("https://jekabs-kulis.wuaze.com/delete.php",
+                                fetch(deleteLink,
                                 {
                                     method: "POST",
                                     headers:
@@ -80,6 +87,7 @@ const Home = () =>
                                 .then((deletedProduct) =>
                                 {
                                     setDeleteProduct(...deleteProduct, deletedProduct)
+                                    window.location.reload();
                                 })
                                 setNewDeleteProductValue(newDeleteProductValue)
                             }}>

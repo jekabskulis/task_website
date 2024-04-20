@@ -31,3 +31,7 @@
   font-weight: bold;
   font-size: 2rem;
 }
+.products__product-change__delete
+{
+  width: 130px;
+}

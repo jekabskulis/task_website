@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 import {useState, useEffect} from "react";
 
 import { DVD, Book, Furniture } from "./formClass.js";
-//import { validateInput} from "./validation.js";
+import { validateInput} from "./validation.js";
 
+const uploadLink = "https://127.0.0.1/task/upload.php";
+const getInfoLink = "https://127.0.0.1/task/getInfro.php";
 
 const newProductDefaultValue =
 {
@@ -24,34 +26,6 @@ const newProductDefaultValue =
     weight: "",
     attributes: ""
 }
-//Supposed to be in a separate file, but validation didn't properly work unless validation function is in the same file as input fields.
-const validateInput = () =>
-{
-    document.addEventListener("DOMContentLoaded", () => 
-    {
-        let elem = document.getElementsByTagName("input");
-        for (let i = 0; i < elem.length; i++) {
-            elem[i].oninvalid = (event) => 
-            {
-                event.target.setCustomValidity("");
-                //Default validity message
-                if(event.target.validity.valueMissing)
-                {
-                    event.target.setCustomValidity("Please, submit required data");
-                }
-                //Validity message for numbers, overwrites default message.
-                if(event.target.validity.patternMismatch)
-                {
-                    event.target.setCustomValidity("Please, provide the data of indicated type");
-                }
-            };
-            elem[i].oninput = (event) => 
-            {
-                event.target.setCustomValidity("");
-            };
-        }
-    })
-}
 
 const ProductAdd = () =>
 {
@@ -63,7 +37,7 @@ const ProductAdd = () =>
 
     const getSkuList = () =>
     {
-        fetch("https://jekabs-kulis.wuaze.com/getInfo.php", {
+        fetch(getInfoLink, {
             method: "GET",
             headers:
             [
@@ -107,8 +81,8 @@ const ProductAdd = () =>
              <Navbar className='justify-content-between pb-0'>
                 <div className='add-products__heading'>Product List</div>
                 <Row className='add-products__product-change'>
-                    <Col><Button className='add-products__product-change__Save' form="product_form" type="submit">SAVE</Button></Col>
-                    <Col><Link to='/'><Button className='add-products__product-chgage__cancel btn-danger'>CANCEL</Button></Link></Col>
+                    <Col><Button className='add-products__product-change__Save' form="product_form" type="submit">Save</Button></Col>
+                    <Col><Link to='/'><Button className='add-products__product-chgage__cancel btn-danger'>Cancel</Button></Link></Col>
                 </Row>
             </Navbar>
             <hr/>
@@ -120,7 +94,7 @@ const ProductAdd = () =>
                     onSubmit={(event) =>
                         {
                         event.preventDefault();
-                        fetch("https://jekabs-kulis.wuaze.com/upload.php",
+                        fetch(uploadLink,
                         {
                             method: "POST",
                             headers:
@@ -135,6 +109,7 @@ const ProductAdd = () =>
                         .then((addedProduct) =>
                         {
                             setProduct(...product, addedProduct)
+                            window.location.href = "http://localhost:3000"
                         })
                         setNewProductValue(newProductDefaultValue)
                     }}>
@@ -160,7 +135,6 @@ const ProductAdd = () =>
                                         }
                                         for(const item of Array.from(skus))
                                         {
-                                            console.log(item, "; ", event.target.value)
                                             if(item.sku === event.target.value) 
                                             {
                                                 document.getElementById("sku-uniqueness").required = true;
