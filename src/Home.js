@@ -7,8 +7,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import {useState, useEffect} from "react";
 
-const getInfoLink = "https://127.0.0.1/task/getInfro.php";
-const deleteLink = "https://127.0.0.1/task/delete.php";
+const getInfoLink = "https://www.jekabskulis25.shop/getInfro.php";
+const deleteLink = "https://www.jekabskulis25.shop/delete.php";
 
 const newDeleteProductDefaultValue = 
 {
@@ -48,7 +48,7 @@ const Home = () =>
 
     const loadProductAdd = () =>
     {
-        window.location.href = "http://localhost:3000/product-add";
+        window.location.href = "https://jekabs-kulis.web.app//product-add";
     }
 
     return(

@@ -10,8 +10,8 @@ import {useState, useEffect} from "react";
 import { DVD, Book, Furniture } from "./formClass.js";
 import { validateInput} from "./validation.js";
 
-const uploadLink = "https://127.0.0.1/task/upload.php";
-const getInfoLink = "https://127.0.0.1/task/getInfro.php";
+const uploadLink = "https://www.jekabskulis25.shop/upload.php";
+const getInfoLink = "https://www.jekabskulis25.shop/getInfro.php";
 
 const newProductDefaultValue =
 {
@@ -109,7 +109,7 @@ const ProductAdd = () =>
                         .then((addedProduct) =>
                         {
                             setProduct(...product, addedProduct)
-                            window.location.href = "http://localhost:3000"
+                            window.location.href = "https://jekabs-kulis.web.app/"
                         })
                         setNewProductValue(newProductDefaultValue)
                     }}>
