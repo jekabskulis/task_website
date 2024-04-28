@@ -1,5 +1,6 @@
 
 import './App.css';
+import { validateInput} from "./validation.js";
 
 import Home from './Home.js';
 import ProductAdd from './ProductAdd.js';
@@ -15,6 +16,9 @@ function App() {
           <Route path="/product-add" element={<ProductAdd />} />
         </Routes>
       </BrowserRouter>
+      {
+      validateInput()
+      }
     </div>
   );
 }
