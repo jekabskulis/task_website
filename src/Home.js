@@ -19,7 +19,7 @@ const newDeleteProductDefaultValue =
 
 const addDeleteClassToCheckboxes = () =>
 {
-    document.querySelector("delete-checkbox-div > input").className = "delete-checkbox";
+    document.querySelector(".delete-checkbox-div > input").className = "delete-checkbox";
 }
 
 const Home = () =>
