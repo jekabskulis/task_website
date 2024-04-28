@@ -17,6 +17,11 @@ const newDeleteProductDefaultValue =
     queryType: "deleteProduct"
 }
 
+const addDeleteClassToCheckboxes = () =>
+{
+    document.querySelector("delete-checkbox-div > input").className = "delete-checkbox";
+}
+
 const Home = () =>
 {
     const[cards, setCards] = useState([]);
@@ -92,7 +97,7 @@ const Home = () =>
                                 <Form.Check
                                 type="checkbox"
                                 id={`delete-product-${index}`}
-                                className="delete-checkbox"
+                                className="delete-checkbox-div"
                                 onChange=
                                 {
                                     () =>
