@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from "react";
+import { useForm } from "react-hook-form";
 
 import { DVD, Book, Furniture } from "./formClass.js";
 //import { validateInput} from "./validation.js";
@@ -28,7 +29,8 @@ const newProductDefaultValue =
 }
 const validateInput = () =>
 {
-    
+    document.addEventListener("DOMContentLoaded", () => 
+    {
         let elem = document.getElementsByTagName("input");
         for (let i = 0; i < elem.length; i++) {
             elem[i].oninvalid = (event) => 
@@ -50,6 +52,7 @@ const validateInput = () =>
                 event.target.setCustomValidity("");
             };
         }
+    })
 }
 
 const ProductAdd = () =>
@@ -120,6 +123,7 @@ const ProductAdd = () =>
                     onSubmit={(event) =>
                         {
                         event.preventDefault();
+                        validateInput();
                         fetch(uploadLink,
                         {
                             method: "POST",
@@ -173,8 +177,8 @@ const ProductAdd = () =>
                                                 document.getElementById("sku-uniqueness-label").style.display = "none";
                                             }
                                         }
-                                        validateInput()
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required">
@@ -210,6 +214,7 @@ const ProductAdd = () =>
                                             name: event.target.value
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required">
