@@ -173,6 +173,7 @@ const ProductAdd = () =>
                                                 document.getElementById("sku-uniqueness-label").style.display = "none";
                                             }
                                         }
+                                        validateInput()
                                         setNewProductValue(updatedNewProductValue)
                                     }
                                 }
