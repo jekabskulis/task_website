@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from 'react-router-dom';
 import {useState, useEffect} from "react";
-import { useForm } from "react-hook-form";
 
 import { DVD, Book, Furniture } from "./formClass.js";
 //import { validateInput} from "./validation.js";
