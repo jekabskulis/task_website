@@ -406,6 +406,7 @@ const ProductAdd = () =>
             </Row>
             
             
+            {validateInput()}
         </div>
     );  
 }
