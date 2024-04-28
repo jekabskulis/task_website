@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import {useState, useEffect} from "react";
+import { Link } from 'react-router-dom';
 
 const getInfoLink = "https://www.jekabskulis25.shop/getInfro.php";
 const deleteLink = "https://www.jekabskulis25.shop/delete.php";
@@ -23,6 +24,10 @@ const Home = () =>
     const[deleteProduct, setDeleteProduct] = useState([]);
    
     //Returns info from the database
+    useEffect(() =>
+    {
+        getValueList();
+    }, [])
     const getValueList = () =>
     {
         fetch(getInfoLink, {
@@ -41,22 +46,12 @@ const Home = () =>
         })
     }
 
-    useEffect(() =>
-    {
-        getValueList();
-    }, [])
-
-    const loadProductAdd = () =>
-    {
-        window.location.href = "https://jekabs-kulis.web.app//product-add";
-    }
-
     return(
         <div className="products">
             <Navbar className='justify-content-between pb-0'>
                 <div className='products__heading'>Product List</div>
                 <Row className='products__product-change'>
-                    <Col><Button className='products__product-chgage__add' onClick={loadProductAdd}>ADD</Button></Col>
+                    <Col><Link to="/product-add"><Button className='products__product-chgage__add'>ADD</Button></Link></Col>
                     <Col><Button className='products__product-change__delete btn-danger' id='delete-product-btn' form="delete-form" type="submit">MASS DELETE</Button></Col>
                 </Row>
             </Navbar>
