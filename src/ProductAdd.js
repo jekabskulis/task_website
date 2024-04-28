@@ -28,8 +28,7 @@ const newProductDefaultValue =
 }
 const validateInput = () =>
 {
-    document.addEventListener("DOMContentLoaded", () => 
-    {
+    
         let elem = document.getElementsByTagName("input");
         for (let i = 0; i < elem.length; i++) {
             elem[i].oninvalid = (event) => 
@@ -51,7 +50,6 @@ const validateInput = () =>
                 event.target.setCustomValidity("");
             };
         }
-    })
 }
 
 const ProductAdd = () =>
@@ -176,7 +174,6 @@ const ProductAdd = () =>
                                             }
                                         }
                                         setNewProductValue(updatedNewProductValue)
-                                        validateInput()
                                     }
                                 }
                                 required="required">
@@ -212,7 +209,6 @@ const ProductAdd = () =>
                                             name: event.target.value
                                         }
                                         setNewProductValue(updatedNewProductValue)
-                                        validateInput()
                                     }
                                 }
                                 required="required">
