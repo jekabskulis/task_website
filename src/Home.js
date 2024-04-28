@@ -36,7 +36,8 @@ const Home = () =>
             [
                 ["Content-Type", "application/json"],
                 ["Accept", "application/json"],
-                ["Access-Control-Allow-Origin", "*"]
+                ["Access-Control-Allow-Origin", "*"],
+                ["Cache-Control", "no-store, no-cache"]
             ]
         })
         .then((rep) => rep.json())
@@ -74,7 +75,9 @@ const Home = () =>
                                     [
                                         ["Content-Type", "application/json"],
                                         ["Accept", "application/json"],
-                                        ["Access-Control-Allow-Origin", "*"]
+                                        ["Access-Control-Allow-Origin", "*"],
+                                        ["Cache-Control", "no-store, no-cache"]
+
                                     ],
                                     body: JSON.stringify(newDeleteProductValue)
                                 })
