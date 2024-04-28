@@ -32,6 +32,7 @@ const validateInput = () =>
     {
         let elem = document.getElementsByTagName("input");
         for (let i = 0; i < elem.length; i++) {
+            console.log("Input validation loaded: ", i);
             elem[i].oninvalid = (event) => 
             {
                 event.target.setCustomValidity("");
@@ -39,6 +40,7 @@ const validateInput = () =>
                 if(event.target.validity.valueMissing)
                 {
                     event.target.setCustomValidity("Please, submit required data");
+                    console.log("Empty input validated");
                 }
                 //Validity message for numbers, overwrites default message.
                 if(event.target.validity.patternMismatch)
