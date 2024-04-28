@@ -3,8 +3,8 @@ import './App.css';
 
 import Home from './Home.js';
 import ProductAdd from './ProductAdd.js';
-
-import {BrowserRouter as Route, Routes} from 'react-router-dom';
+// eslint-disable-next-line
+import {BrowserRouter as BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (

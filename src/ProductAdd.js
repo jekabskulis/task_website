@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import {useState, useEffect} from "react";
 
 import { DVD, Book, Furniture } from "./formClass.js";
-import { validateInput} from "./validation.js";
+//import { validateInput} from "./validation.js";
 
 const uploadLink = "https://www.jekabskulis25.shop/upload.php";
 const getInfoLink = "https://www.jekabskulis25.shop/getInfro.php";
@@ -25,6 +25,33 @@ const newProductDefaultValue =
     size: "",
     weight: "",
     attributes: ""
+}
+const validateInput = () =>
+{
+    document.addEventListener("DOMContentLoaded", () => 
+    {
+        let elem = document.getElementsByTagName("input");
+        for (let i = 0; i < elem.length; i++) {
+            elem[i].oninvalid = (event) => 
+            {
+                event.target.setCustomValidity("");
+                //Default validity message
+                if(event.target.validity.valueMissing)
+                {
+                    event.target.setCustomValidity("Please, submit required data");
+                }
+                //Validity message for numbers, overwrites default message.
+                if(event.target.validity.patternMismatch)
+                {
+                    event.target.setCustomValidity("Please, provide the data of indicated type");
+                }
+            };
+            elem[i].oninput = (event) => 
+            {
+                event.target.setCustomValidity("");
+            };
+        }
+    })
 }
 
 const ProductAdd = () =>
