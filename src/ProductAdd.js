@@ -148,6 +148,7 @@ const ProductAdd = () =>
                                             }
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required">
@@ -183,6 +184,7 @@ const ProductAdd = () =>
                                             name: event.target.value
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required">
@@ -208,6 +210,7 @@ const ProductAdd = () =>
                                             price: event.target.value
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required"
@@ -248,6 +251,7 @@ const ProductAdd = () =>
                                             attributes: "Size: " + event.target.value + " MB"
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required"
@@ -276,6 +280,7 @@ const ProductAdd = () =>
                                             attributes: "Weight: " + event.target.value + " KG"
                                         }
                                         setNewProductValue(updatedNewProductValue)
+                                        validateInput()
                                     }
                                 }
                                 required="required"
@@ -330,6 +335,7 @@ const ProductAdd = () =>
                                                 width: event.target.value
                                             }
                                             setNewProductValue(updatedNewProductValue)
+                                            validateInput()
                                         }
                                     }
                                     required="required"
@@ -357,6 +363,7 @@ const ProductAdd = () =>
                                                 attributes: "Dimensions: " + newProductValue.height + "x" + newProductValue.width + "x" + event.target.value
                                             }
                                             setNewProductValue(updatedNewProductValue)
+                                            validateInput()
                                         }
                                     }
                                     required="required"
@@ -369,8 +376,7 @@ const ProductAdd = () =>
                 </Col>
             </Row>
             
-            {//Adds validation to input fields
-            validateInput()}
+            
         </div>
     );  
 }
