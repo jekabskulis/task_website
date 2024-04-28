@@ -131,6 +131,7 @@ const Home = () =>
             )
             })}
             </Row>
+            {addDeleteClassToCheckboxes()}
         </div>
     );
 }
