@@ -105,7 +105,8 @@ const Home = () =>
                             }}>
                                 <Form.Check
                                 type="checkbox"
-                                id={`delete-product-${index} delete-checkbox`}
+                                id={`delete-product-${index}`}
+                                className="delete-checkbox"
                                 onChange=
                                 {
                                     () =>
