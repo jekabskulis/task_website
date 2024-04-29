@@ -19,19 +19,28 @@ const newDeleteProductDefaultValue =
 
 const addDeleteClassToCheckboxes = () =>
 {
-    document.querySelector(".delete-checkbox-div > input").className = "delete-checkbox";
+    const parent = document.getElementsByClassName('delete-checkbox-div');
+    for(let i = 0; i < parent.length; i++)
+    {
+        parent[i].getElementsByTagName("input").item(0).classList.add("delete-checkbox");
+        console.log(parent[i].getElementsByTagName("input").item(0));
+    }
+    
 }
 
 const Home = () =>
 {
+
     const[cards, setCards] = useState([]);
     const[newDeleteProductValue, setNewDeleteProductValue] = useState(newDeleteProductDefaultValue);
     const[deleteProduct, setDeleteProduct] = useState([]);
    
+
     //Returns info from the database
     useEffect(() =>
     {
         getValueList();
+        addDeleteClassToCheckboxes();
     }, [])
     const getValueList = () =>
     {
@@ -96,8 +105,7 @@ const Home = () =>
                             }}>
                                 <Form.Check
                                 type="checkbox"
-                                id={`delete-product-${index}`}
-                                className="delete-checkbox-div"
+                                id={`delete-product-${index} delete-checkbox`}
                                 onChange=
                                 {
                                     () =>
@@ -125,6 +133,7 @@ const Home = () =>
                                 <Card.Text className="text-center mb-1">{card.name}</Card.Text>
                                 <Card.Text className="text-center mb-1">Price: {card.price}$</Card.Text>
                                 <Card.Text className="text-center mb-1">{card.attributes}</Card.Text>
+                                {addDeleteClassToCheckboxes()}
                             </Card.Body>
                         </Card>
                     </Col>
